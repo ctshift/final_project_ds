@@ -3,16 +3,27 @@ title: "Project Proposal"
 output: html_notebook
 ---
 
-(notice that you can reuse some of the sections below for the final project report)
-
 ## Section 1. Introduction
 
-Include a brief **introduction or motivation** here
+I've chosen a dataset from GapMinder on nuclear power for this project. It's a 
+topic thatcould (hopefully) benefit greatly from further research, and I'd like 
+to try to come to some new conclusions relating to nuclear power.
 
 ## Section 2. Data Analysis Plan
 
-List any **initial questions** you plan to explore in this project. 
+-Do countries that produce more nuclear power have proportionately lower 
+  emissions output?
+-Do countries ever drop nuclear power? If so, can a correlation be determined?
+-Are more countries picking up nuclear power as time goes on?
+-What countries have the highest output of nuclear power? How much CO2 are those
+  countries producing? Is it proportionately less CO2 than countries not using
+  nuclear power?
 
 ## Section 3. Data
 
-Include a brief **description of your dataset** (source, available attributes, format, etc.)
+The dataset is pulled from [GapMinder](https://www.gapminder.org/data/). It 
+lists each country, and their respective nuclear power production (or production
+per capita, depending on the dataset referenced,) per year. Gapminder offers a 
+few other datasets that may prove useful, including total CO2 emissions of all 
+countries per year, production of other energy types (like coal, oil, etc.) and
+energy use per country per person.
