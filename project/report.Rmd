@@ -1,13 +1,44 @@
 ---
-title: "Final Report for Intro to Data Science"
-output: html_notebook
+title: "Nuclear Power"
+author: "Joseph Weiner"
 ---
 
-This is where the final project report write-up goes. 
+```{r}
+library(tidyverse)
+library(lubridate)
+```
+## Importing the dataframe
 
+```{r}
+nuclear_power <- read.csv('data/nuclear_power_generation_total.csv', check.names = F)
+```
+The dataframe required lots of editing by hand- numbers were listed in shorthand form (ie. 1.09M, 135K, etc.) 130~ manual queries had to be done in order to convert the entire frame to  usable values.
 
-Before you submit, make sure everything runs as expected.
+```{r}
+nuclear_power <- nuclear_power %>% 
+  pivot_longer(c(2:53),
+  names_to = "Year",
+  values_to = "Tonnes of oil equivalent"
+  ) 
+```
+Changing the format of the dataframe so that it is in "tidy" format.
 
-You can add sections as you see fit. Make sure you have a section called "Introduction" at the beginning and a section called "Conclusion" at the end. The rest is up to you!
+```{r}
+nuclear_power <- nuclear_power %>% 
+   rename(Country = 'ï»¿Country')
+```
+Adjusting the name of the country column- the `read.csv()` function corrupts the column name for an unknown reason.
 
-_Make use of your knowledge of Markdown to appropriately typeset this report!_
+```{r}
+nuclear_power$Year <- as.numeric(nuclear_power$Year)
+nuclear_power$`Tonnes of oil equivalent` <- as.numeric(nuclear_power$`Tonnes of oil equivalent`)
+sapply(nuclear_power, class)
+```
+Ensuring columns are enumerated correctly.
+
+```{r}
+nuclear_power %>% 
+  filter(Country == 'UnitedStates') %>% 
+  ggplot() +
+  geom_line(x = 'Year', y = 'Tonnes of oil equivalent')
+```
